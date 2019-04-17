@@ -1,7 +1,7 @@
 privilegeTargets:
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
     'Medienreaktor.Import:ImportController':
-      matcher: 'method(Medienreaktor\Import\Controller\ImportController->(index)Action())'
+      matcher: 'method(Medienreaktor\Import\Controller\ImportController->(index|upload|mapping|import)Action())'
 roles:
   'Neos.Neos:AbstractEditor':
     privileges:

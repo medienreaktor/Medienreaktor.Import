@@ -1,0 +1,47 @@
+<f:layout name="Import" />
+
+<f:section name="Content">
+    <f:form method="post" action="import">
+        <div class="neos-row-fluid neos-module-container">
+            <fieldset class="neos-span12">
+                <legend>Mapping</legend>
+                <table class="neos-table">
+                    <thead>
+                        <tr>
+                            <th>Source field</th>
+                            <th>Target property</th>
+                            <th>Preview</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{data.0}" as="col" iteration="iterator">
+                            <tr>
+                                <td>{col}</td>
+                                <td>
+                                    <f:form.select name="mapping[{iterator.index}]" options="{properties}"></f:form.select>
+                                </td>
+                                <td>
+                                    <f:for each="{data}" as="row" iteration="i">
+                                        <f:if condition="!{i.isFirst}">
+                                            <f:if condition="{i.cycle} < 5">
+                                                <f:for each="{row}" as="c" iteration="j">
+                                                    <f:if condition="{j.cycle} == {iterator.cycle}">
+                                                        {c}<br>
+                                                    </f:if>
+                                                </f:for>
+                                            </f:if>
+                                        </f:if>
+                                    </f:for>
+                                    …
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+        <div class="neos-footer">
+            <f:form.submit class="neos-button neos-button-primary" value="Import data"></f:form.submit>
+        </div>
+    </f:form>
+</f:section>

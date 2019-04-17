@@ -1,5 +1,43 @@
 <f:layout name="Import" />
 
 <f:section name="Content">
-    <h1>Import</h1>
+    <f:form method="post" action="upload" object="{asset}" objectName="asset" enctype="multipart/form-data">
+        <div class="neos-row-fluid neos-module-container">
+            <fieldset class="neos-span5">
+                <legend>Source</legend>
+                <div class="neos-control-group">
+                    <label class="neos-control-label">CSV file</label>
+                    <div class="neos-controls">
+                        <f:form.upload class="neos-span12 form-control" id="resource" name="resource" property="resource" value="{args.asset.resource.originallySubmittedResource.__identity}" additionalAttributes="{required: 'required'}" />
+                    </div>
+                </div>
+                <div class="neos-control-group">
+                    <label class="neos-control-label">Delimiter</label>
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12 form-control" name="delimiter" additionalAttributes="{required: 'required'}" value=";"></f:form.textfield>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="neos-row-fluid neos-module-container">
+            <fieldset class="neos-span5">
+                <legend>Target</legend>
+                <div class="neos-control-group">
+                    <label class="neos-control-label">Parent node identifier</label>
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12 form-control" name="parentNodeIdentifier" additionalAttributes="{required: 'required'}" value="" placeholder="#4819bd3a-a465-4c48-adad-eb12bf113c89"></f:form.textfield>
+                    </div>
+                </div>
+                <div class="neos-control-group">
+                    <label class="neos-control-label">Target NodeType</label>
+                    <div class="neos-controls">
+                        <f:form.select class="neos-span12 form-control" name="targetNodeType" additionalAttributes="{required: 'required'}" options="{nodeTypes}"></f:form.select>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="neos-footer">
+            <f:form.submit class="neos-button neos-button-primary" value="Upload and proceed"></f:form.submit>
+        </div>
+    </f:form>
 </f:section>
