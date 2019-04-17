@@ -2,6 +2,11 @@
     "name": "medienreaktor/import",
     "type": "neos-package",
     "description": "Import module for Neos CMS",
+    "autoload": {
+        "psr-4": {
+            "Medienreaktor\\Import\\": "Classes/"
+        }
+    },
     "require": {
         "neos/neos": "*"
     },
