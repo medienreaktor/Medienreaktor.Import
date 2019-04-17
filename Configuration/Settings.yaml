@@ -1,0 +1,11 @@
+Neos:
+  Neos:
+    modules:
+      management:
+        submodules:
+          import:
+            controller: \Medienreaktor\Import\Controller\ImportController
+            label: 'Import'
+            description: 'The Import module provides you the ability to import nodes from CSV files.'
+            icon: 'icon-exchange'
+            privilegeTarget: 'Medienreaktor.Import:ImportController'

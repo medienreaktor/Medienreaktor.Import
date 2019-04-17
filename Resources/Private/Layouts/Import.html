@@ -1,0 +1,19 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<div class="neos neos-content">
+	<div class="neos-import-content">
+		<div class="neos-notification-container">
+            <f:flashMessages as="flashMessages">
+            	<f:if condition="{flashMessages -> f:count()} > 0">
+            		<ul id="neos-notifications-inline">
+            			<f:for each="{flashMessages}" as="flashMessage">
+            				<li data-type="{flashMessage.severity -> f:format.case(mode: 'lower')}">{neos:backend.translate(id: 'flashMessage.{flashMessage.code}', arguments: flashMessage.arguments, value: flashMessage)}</li>
+            			</f:for>
+            		</ul>
+            	</f:if>
+            </f:flashMessages>
+		</div>
+
+		<f:render section="Content" />
+	</div>
+</div>
