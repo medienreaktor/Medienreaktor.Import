@@ -136,6 +136,7 @@ class ImportController extends ActionController
             $this->persistenceManager->persistAll();
         }
 
+        $this->import->flush();
         $this->addFlashMessage("Imported $i entries successfully.", "", Message::SEVERITY_OK);
         $this->redirect('index');
     }
