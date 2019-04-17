@@ -1,0 +1,13 @@
+{
+    "name": "medienreaktor/import",
+    "type": "neos-package",
+    "description": "Import module for Neos CMS",
+    "require": {
+        "neos/neos": "*"
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Medienreaktor.Import"
+        }
+    }
+}
