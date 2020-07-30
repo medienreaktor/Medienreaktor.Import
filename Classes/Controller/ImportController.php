@@ -40,7 +40,7 @@ class ImportController extends ActionController
      */
     public function indexAction()
     {
-        $nodeTypes = $this->nodeTypeManager->getSubNodeTypes('Neos.Neos:Document', false);
+        $nodeTypes = $this->nodeTypeManager->getNodeTypes(false);
 
         $nodeTypeOptions = [];
         foreach ($nodeTypes as $nodeType) {
