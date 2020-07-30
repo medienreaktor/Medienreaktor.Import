@@ -62,10 +62,13 @@ class ImportController extends ActionController
 
         $this->import->flush();
 
-        if (isset($args['asset'])) $filePath = $args['asset']['resource']['tmp_name'];
+        if (isset($args['asset'])) $resource = $args['asset']['resource'];
 
-        if (isset($filePath)) {
-            $file = fopen($filePath, 'r');
+        if (isset($resource)) {
+            $file = fopen('php://memory','r+');
+            fputs($file, $resource->getStream());
+            rewind($file);
+            
             $this->import->setDataFromCSV($file, $args['delimiter']);
             $this->import->setParentNodeIdentifier($args['parentNodeIdentifier']);
             $this->import->setTargetNodeType($args['targetNodeType']);
