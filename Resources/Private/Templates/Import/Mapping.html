@@ -18,7 +18,7 @@
                             <tr>
                                 <td>{col}</td>
                                 <td>
-                                    <f:form.select name="mapping[{iterator.index}]" options="{properties}"></f:form.select>
+                                    <f:form.select name="mapping[{iterator.index}]" options="{properties}" value="{col}"/>
                                 </td>
                                 <td>
                                     <f:for each="{data}" as="row" iteration="i">
@@ -41,7 +41,7 @@
             </fieldset>
         </div>
         <div class="neos-footer">
-            <f:form.submit class="neos-button neos-button-primary" value="Import data"></f:form.submit>
+            <f:form.submit class="neos-button neos-button-primary" value="Import data"/>
         </div>
     </f:form>
 </f:section>
