@@ -62,7 +62,9 @@ class ImportController extends ActionController
 
         $this->import->flush();
 
-        if (isset($args['asset'])) $filePath = $args['asset']['resource']['tmp_name'];
+        if (isset($args['asset'])) {
+            $filePath = $_FILES['moduleArguments']['tmp_name']['asset']['resource'];
+        }
 
         if (isset($filePath)) {
             $file = fopen($filePath, 'r');
