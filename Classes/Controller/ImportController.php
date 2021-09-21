@@ -130,7 +130,12 @@ class ImportController extends ActionController
             $i = 0;
             foreach ($row as $col) {
                 if (isset($mapping[$i]) && $mapping[$i] != '___') {
-                    $node->setProperty($mapping[$i], $col);
+                    if ($node->getNodeType()->getPropertyType($mapping[$i]) === 'reference') {
+                        $refNode = $q->find($col)->get(0);
+                        $node->setProperty($mapping[$i], $refNode);
+                    } else {
+                        $node->setProperty($mapping[$i], $col);
+                    }
                 }
                 $i++;
             }
