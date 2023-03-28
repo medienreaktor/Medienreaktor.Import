@@ -71,6 +71,7 @@ class ImportController extends ActionController
             $this->import->setDataFromCSV($file, $args['delimiter']);
             $this->import->setParentNodeIdentifier($args['parentNodeIdentifier']);
             $this->import->setTargetNodeType($args['targetNodeType']);
+            $this->import->setTargetWorkspace($args['targetWorkspace']);
 
             $this->redirect('mapping');
         }
@@ -116,8 +117,14 @@ class ImportController extends ActionController
         $parentNodeIdentifier = $this->import->getParentNodeIdentifier();
         $targetNodeType = $this->nodeTypeManager->getNodeType($this->import->getTargetNodeType());
 
-        $context = $this->contextFactory->create();
-        $q = new FlowQuery([$context->getCurrentSiteNode()]);
+        $workspace = $this->import->getTargetWorkspace();
+
+        /** @var ContentContext $contentContext */
+        $contentContext = $this->contextFactory->create([
+            'workspaceName' => $workspace,
+        ]);
+
+        $q = new FlowQuery([$contentContext->getCurrentSiteNode()]);
         $parentNode = $q->find($parentNodeIdentifier)->get(0);
 
         $nodeTemplate = new NodeTemplate();

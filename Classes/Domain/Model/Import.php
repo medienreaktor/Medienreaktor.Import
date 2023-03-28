@@ -25,6 +25,11 @@ class Import
     protected $targetNodeType = '';
 
     /**
+     * @var string
+     */
+    protected $targetWorkspace = '';
+
+    /**
      * Get data
      *
      * @return array
@@ -112,6 +117,29 @@ class Import
     }
 
     /**
+     * Get targetWorkspace
+     *
+     * @return string
+     * @Flow\Session(autoStart = TRUE)
+     */
+    public function getTargetWorkspace()
+    {
+        return $this->targetWorkspace;
+    }
+
+    /**
+     * Set targetWorkspace
+     *
+     * @param string $targetWorkspace
+     * @return void
+     * @Flow\Session(autoStart = TRUE)
+     */
+    public function setTargetWorkspace($targetWorkspace)
+    {
+        $this->targetWorkspace = $targetWorkspace;
+    }
+
+    /**
      * Remove all import data
      *
      * @return void
@@ -121,5 +149,6 @@ class Import
         unset($this->data);
         unset($this->parentNodeIdentifier);
         unset($this->targetNodeType);
+        unset($this->targetWorkspace);
     }
 }
